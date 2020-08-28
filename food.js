@@ -1,6 +1,7 @@
 class Food{
     constructor(){
-        var foodStock,lastFed;
+        this. foodStock;
+        this.lastFed;
         this.getFoodStock;
         this.updateFoodStock;
         this.deductFood;

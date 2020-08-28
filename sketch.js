@@ -7,8 +7,8 @@ var foodObj;
 function preload()
 {
   //load images here
-  Dog=loadImage("images/dog.png");
-  HappyDog=loadImage("images/dogimg.png");
+  Dog=loadImage("dog.png");
+  HappyDog=loadImage("dogimg.png");
   milk1 =loadImage("Milk.png");
   
 }
