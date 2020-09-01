@@ -32,7 +32,7 @@ function setup() {
 
 
   
-  foodStock = database.ref('Food');
+  foodStock = database.ref('food');
   foodStock.on("value",readStock);
 }
 
@@ -72,7 +72,7 @@ dog.addImage(HappyDog);
 
 foodObj.updateFoodStock(foodObj.getFoodStock()-1);
 database.ref('/').update({
- Food: foodObj.getFoodStock(),
+ food: foodObj.getFoodStock(),
  feedTime:hour()
 })
 }
@@ -80,7 +80,7 @@ database.ref('/').update({
 function addFoods(){
   foodS++;
   database.ref('/').update({
-    Food:foodS
+    food:foodS
   })
 dog.addImage(Dog);
 }
@@ -97,6 +97,6 @@ if(x<=0){
   x=x-1;
 }
   database.ref('/').update({
-    'Food':x
+    'food':x
   })
 }
