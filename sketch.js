@@ -9,15 +9,14 @@ function preload()
   //load images here
   Dog=loadImage("dog.png");
   HappyDog=loadImage("dogimg.png");
-  milk1 =loadImage("Milk.png");
-  
+ 
 }
 
 function setup() {
   createCanvas(displayWidth - 20, displayHeight-30);
   database = firebase.database();
 
- dog = createSprite(400,500,5,5);
+ dog = createSprite(500,500,5,5);
  dog.addImage(Dog);
 
  foodObj = new Food();
@@ -25,12 +24,13 @@ function setup() {
  feed=createButton("Feed The Dog");
  feed.position(700,95);
  feed.mousePressed(feedDog);
+ feed.mouseReleased(FeedDog);
 
  addFood=createButton("addfood");
  addFood.position(800,95);
  addFood.mousePressed(addFoods);
 
-
+rect(670,120,40,80);
   
   foodStock = database.ref('food');
   foodStock.on("value",readStock);
@@ -64,17 +64,33 @@ if(lastFed>=12){
 stroke(255);
 textSize(40);
 fill("yellow");
-text("food: " + foodS,200,200);
+text("food: " + foodS,380,150);
+
+strokeWeight(4);
+stroke(46, 139, 87);
+fill(46, 139, 87);
+rect(700,110,190,140);
+stroke(255);
+textSize(40);
+;
+
 }
 
 function feedDog(){
 dog.addImage(HappyDog);
+dog.x=100;
+dog.y=460;
 
 foodObj.updateFoodStock(foodObj.getFoodStock()-1);
 database.ref('/').update({
  food: foodObj.getFoodStock(),
  feedTime:hour()
 })
+}
+
+function FeedDog(){
+  dog.x=500;
+  dog.y=500;
 }
 
 function addFoods(){
@@ -87,6 +103,7 @@ dog.addImage(Dog);
 
 function readStock(data){
   foodS = data.val();
+  foodObj.updateFoodStock(foodS);
 }
 
 function writeStock(x){
@@ -97,6 +114,6 @@ if(x<=0){
   x=x-1;
 }
   database.ref('/').update({
-    'food':x
+    'Food':x
   })
 }
