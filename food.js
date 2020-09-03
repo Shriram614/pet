@@ -5,6 +5,17 @@ class Food{
        
         this.image=loadImage("Milk.png");
     }
+    bedroom(){
+        background(bedRoom,550,500);
+    }
+
+    washroom(){
+        background(Washroom,550,500);
+    }
+
+    garden(){
+        background(garden,550,500);
+    }
     updateFoodStock(foodStock){ 
         this.foodStock=foodStock;
      }
